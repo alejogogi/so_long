@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2024/10/17 23:13:39 by alejogogi         #+#    #+#             */
+/*   Updated: 2024/10/23 03:27:37 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "libft.h"
 
-#include "get_next_line.h"
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+}
 
-#endif
+/*
+int	main(void)
+{
+	ft_putstr_fd("holla, 42! \n");
+	return(0);
+}
+*/

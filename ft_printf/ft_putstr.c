@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2024/10/29 10:44:09 by alejogogi         #+#    #+#             */
+/*   Updated: 2025/01/10 20:41:55 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-#include "get_next_line.h"
+int	ft_putstr(char *s)
+{
+	int	c;
 
-#endif
+	c = 0;
+	if (!s)
+		s = "(null)";
+	while (s[c])
+	{
+		ft_putchar(s[c]);
+		c++;
+	}
+	return (c);
+}
+
+// int	main(void)
+// {
+// 	char	*c = NULL;
+// 	int	b;
+
+// 	b = ft_putstr(c);
+// 	write (1, "\n", 1);
+// 	printf("long: %d\n", b);
+// 	return (0);
+// }

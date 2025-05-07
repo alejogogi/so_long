@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2024/10/29 10:36:29 by alejogogi         #+#    #+#             */
+/*   Updated: 2025/02/20 16:31:38 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "ft_printf.h"
 
-#include "get_next_line.h"
-
-#endif
+int	ft_putchar(int c)
+{
+	return (write(1, &c, 1));
+}

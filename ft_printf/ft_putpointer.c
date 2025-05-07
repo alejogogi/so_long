@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2025/01/06 19:04:13 by alejogogi         #+#    #+#             */
+/*   Updated: 2025/01/08 21:34:13 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "ft_printf.h"
 
-#include "get_next_line.h"
+int	ft_putpointer(void *ptr)
+{
+	unsigned long long	a;
+	int					ln;
 
-#endif
+	ln = 0;
+	a = (unsigned long long)ptr;
+	if (!ptr)
+	{
+		return (ft_putstr("(nil)"));
+	}
+	ln += ft_putstr("0x");
+	ln += ft_puthex(a, 'x');
+	return (ln);
+}

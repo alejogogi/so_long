@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2024/10/31 13:04:48 by alejogogi         #+#    #+#             */
+/*   Updated: 2025/01/09 18:53:18 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "ft_printf.h"
 
-#include "get_next_line.h"
+int	ft_puthex(unsigned long long num, char c)
+{
+	char	*hex;
+	int		ln;
 
-#endif
+	ln = 0;
+	if (c == 'X')
+	{
+		hex = "0123456789ABCDEF";
+	}
+	else if (c == 'x')
+	{
+		hex = "0123456789abcdef";
+	}
+	else
+		return (0);
+	if (num >= 16)
+	{
+		ln = ln + ft_puthex(num / 16, c);
+	}
+	ln += ft_putchar(hex[num % 16]);
+	return (ln);
+}

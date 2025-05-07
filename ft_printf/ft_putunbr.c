@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Created: 2024/10/31 13:03:56 by alejogogi         #+#    #+#             */
+/*   Updated: 2025/01/09 20:53:21 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "ft_printf.h"
 
-#include "get_next_line.h"
+int	ft_putunbr(unsigned int num)
+{
+	long	n;
+	int		ln;
 
-#endif
+	ln = 0;
+	n = num;
+	if (n >= 10)
+	{
+		ln += ft_putunbr(n / 10);
+	}
+	ln += ft_putchar((n % 10) + '0');
+	return (ln);
+}
