@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/07 21:15:08 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/09 23:07:12 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,21 @@
 #define SO_LONG_H
 
 #include "get_next_line.h"
+#include "../minilibx-linux/mlx.h"
+#include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+typedef struct t_tools
+{
+	int	colums;
+	int	rows;
+	char **cpy_map;
+}		t_tools;
+
+void	check_ber(char *maps);
+void	open_map(char *args, t_tools *tools);
 
 #endif

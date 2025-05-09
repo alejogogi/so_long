@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejagom <alejagom@student.42madird.fr>    +#+  +:+       +#+        */
+/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 06:56:58 by alejogogi         #+#    #+#             */
-/*   Updated: 2024/10/21 01:48:31 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:54:58 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 char	*ft_strdup(const char *str)
 {
-	size_t	longitud;
+	size_t	ln;
 	size_t	i;
 	char	*cop;
 
-	longitud = 0;
+	ln = 0;
 	i = 0;
-	while (str[longitud] != '\0')
-	{
-		longitud++;
-	}
-	cop = (char *)malloc((longitud + 1) * sizeof(char));
+	ln = ft_strlen(str);
+	cop = (char *)malloc((ln + 1) * sizeof(char));
 	if (!cop)
 	{
 		return (0);
 	}
-	while (i <= longitud)
+	while (i <= ln)
 	{
 		cop[i] = str[i];
 		i++;
