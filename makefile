@@ -6,7 +6,7 @@
 #    By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/06 19:46:51 by alejagom          #+#    #+#              #
-#    Updated: 2025/05/09 23:05:20 by alejogogi        ###   ########.fr        #
+#    Updated: 2025/05/10 12:26:26 by alejogogi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RM = rm -f
 
 .PHONY: all clean fclean re
 
-all: $(LIBFT) $(FT_PRINTF) $(NAME)
+all: $(MLX) $(LIBFT) $(FT_PRINTF) $(NAME)
 
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
@@ -62,7 +62,6 @@ clean:
 
 fclean:
 	$(RM) $(OBJ) $(NAME)
-	$(MAKE) -C $(MLX_DIR) fclean
 	$(MAKE) -C $(LIB_DIR) fclean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 

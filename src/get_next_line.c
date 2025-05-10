@@ -6,11 +6,12 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:52:08 by gafreire          #+#    #+#             */
-/*   Updated: 2025/02/26 18:24:33 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/10 11:35:48 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "so_long.h"
 
 char	*get_next_line(int fd)
 {
@@ -45,13 +46,13 @@ char	*read_newline(int fd, char *line_buffer, char *buffer)
 	int	size;
 
 	size = 1;
-	while (!ft_strchr(line_buffer, '\n') && size > 0)
+	while (!gt_strchr(line_buffer, '\n') && size > 0)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size < 0)
 			return (free(buffer), free(line_buffer), line_buffer = NULL);
 		buffer[size] = '\0';
-		line_buffer = ft_strjoin(line_buffer, buffer);
+		line_buffer = gt_strjoin(line_buffer, buffer);
 		if (!line_buffer)
 			return (free(buffer), NULL);
 	}
@@ -101,7 +102,7 @@ char	*extract_remaining(char *line_buffer)
 		len++;
 	if (line_buffer[len] == '\n')
 		len++;
-	rest = malloc((ft_strlen(line_buffer) - len + 1) * sizeof(char));
+	rest = malloc((gt_strlen(line_buffer) - len + 1) * sizeof(char));
 	if (!rest)
 		return (free(line_buffer), NULL);
 	while (line_buffer[len + i])
@@ -113,23 +114,23 @@ char	*extract_remaining(char *line_buffer)
 	return (free(line_buffer), rest);
 }
 
-/* int	main(void)
-{
-	int		fd;
-	char	*line;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
 
-	fd = open("prueba.txt", O_RDONLY);
-	line = get_next_line(fd);
-	if (fd < 0)
-	{
-		perror("error");
-		return (1);
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
-} */
+// 	fd = open("prueba.txt", O_RDONLY);
+// 	line = get_next_line(fd);
+// 	if (fd < 0)
+// 	{
+// 		perror("error");
+// 		return (1);
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }

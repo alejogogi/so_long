@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/09 23:28:16 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/10 21:38:41 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,17 @@ void	check_args(int av, char **args)
 	}
 	check_ber(args[1]);
 }
+
 int	main(int av, char **args)
 {
-	t_tools	tools;
-	
+	t_tools		*tools;
+
+	tools = malloc(sizeof(t_tools));
+	if (!tools)
+		return (0);
 	check_args(av, args);
-	open_map(args[1], &tools);
+	open_map(args[1], tools);
+	parc_map(tools);
+	free(tools);
 	return (0);
 }

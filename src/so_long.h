@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/09 23:07:12 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/10 12:55:42 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct t_tools
+typedef struct s_tools
 {
 	int	colums;
 	int	rows;
@@ -30,5 +30,6 @@ typedef struct t_tools
 
 void	check_ber(char *maps);
 void	open_map(char *args, t_tools *tools);
+void	parc_map(t_tools *tools);
 
 #endif
