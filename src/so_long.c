@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/10 21:38:41 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/11 22:44:59 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ void	check_args(int av, char **args)
 	check_ber(args[1]);
 }
 
+void	free_tools(t_tools *tools)
+{
+	int	i;
+
+	i = 0;
+	if (tools->cpy_map)
+	{
+		while (tools->cpy_map[i])
+		{
+			free(tools->cpy_map[i]);
+			i++;
+		}
+		free(tools->cpy_map);
+	}
+	free(tools);
+}
+
 int	main(int av, char **args)
 {
 	t_tools		*tools;
@@ -35,6 +52,6 @@ int	main(int av, char **args)
 	check_args(av, args);
 	open_map(args[1], tools);
 	parc_map(tools);
-	free(tools);
+	free_tools(tools);
 	return (0);
 }

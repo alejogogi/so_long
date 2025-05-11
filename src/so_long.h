@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:46:04 by alejagom          #+#    #+#             */
-/*   Updated: 2025/05/10 12:55:42 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/11 22:45:29 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_tools
 void	check_ber(char *maps);
 void	open_map(char *args, t_tools *tools);
 void	parc_map(t_tools *tools);
+void	free_tools(t_tools *tools);
 
 #endif

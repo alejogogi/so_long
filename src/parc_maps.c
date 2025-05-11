@@ -6,14 +6,15 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:47:23 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/10 21:34:24 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/11 22:48:23 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	exit_message(char *error)
+void	exit_message(char *error, t_tools *tools)
 {
+	free_tools(tools);
 	ft_printf("%s\n", error);
 	exit(EXIT_FAILURE);
 }
@@ -29,10 +30,10 @@ void	aux_check_walls(t_tools *tools)
 	{
 		i = 0;
 		if (tools->cpy_map[o][i] != '1')
-			exit_message("Error: Invalid map.");
+			exit_message("Error: Invalid map.", tools);
 		i = tools->colums - 1;
 		if (tools->cpy_map[o][i] != '1')
-			exit_message("Error: Invalid map.");
+			exit_message("Error: Invalid map.", tools);
 		o++;
 	}
 }
@@ -45,11 +46,11 @@ void	check_walls(t_tools *tools)
 	o = 0;
 	i = 0;
 	if (!tools->cpy_map || !tools->cpy_map[0])
-		exit_message("Error.");
+		exit_message("Error.", tools);
 	while (tools->cpy_map[0][i] != '\n')
 	{
 		if (tools->cpy_map[0][i] != '1')
-			exit_message("Error: Invalid map.");
+			exit_message("Error: Invalid map.", tools);
 		i++;
 	}
 	aux_check_walls(tools);
@@ -58,7 +59,7 @@ void	check_walls(t_tools *tools)
 	while (tools->cpy_map[o][i] != '\0')
 	{
 		if (tools->cpy_map[o][i] != '1')
-			exit_message("Error: Invalid map.");
+			exit_message("Error: Invalid map.", tools);
 		i++;
 	}
 }
@@ -83,7 +84,7 @@ void	check_coins(t_tools *tools)
 		i++;
 	}
 	if (check == 0)
-		exit_message("Error: Coins not found.");
+		exit_message("Error: Coins not found.", tools);
 }
 
 void	doubble_items(t_tools *tools, char letter, char *message)
@@ -102,7 +103,7 @@ void	doubble_items(t_tools *tools, char letter, char *message)
 			if (tools->cpy_map[i][o] == letter)
 				check++;
 			if (check > 1)
-				exit_message(message);
+				exit_message(message, tools);
 			o++;
 		}
 		i++;
@@ -122,7 +123,7 @@ void	parc_map(t_tools *tools)
 		if (tools->cpy_map[i][ln - 1] == '\n')
 			ln--;
 		if (ln != tools->colums)
-			exit_message("Error: Invalid map.");
+			exit_message("Error: Invalid map.", tools);
 		i++;
 	}
 	doubble_items(tools, 'P', "Error: Doubble player.");
