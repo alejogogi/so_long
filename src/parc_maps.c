@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:47:23 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/11 22:48:23 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/12 19:00:11 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,5 @@ void	parc_map(t_tools *tools)
 	doubble_items(tools, 'E', "Error: Doubble exit.");
 	check_coins(tools);
 	check_walls(tools);
+	floot_fill(tools);
 }

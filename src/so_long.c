@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/11 22:44:59 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/12 18:49:01 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int av, char **args)
 	check_args(av, args);
 	open_map(args[1], tools);
 	parc_map(tools);
+	star_game(tools);
 	free_tools(tools);
 	return (0);
 }

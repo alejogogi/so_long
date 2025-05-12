@@ -6,11 +6,42 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:42:40 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/10 21:33:47 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/12 21:06:57 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	cpy_map(t_tools *tools, char **map)
+{
+	int	i;
+
+	i = 0;
+	map = (char **)malloc((tools->rows + 1) * sizeof(char *));
+	if (!map)
+		exit_message("Error", tools);
+	while (map[i] < tools->rows)
+	{
+		map[i] = ft_strdup(tools->cpy_map[i]);
+		i++;
+	}
+}
+
+void	floot_fill(t_tools *tools)
+{
+	char	**map;
+	int		i;
+
+	i = 0;
+	cpy_map(tools, map);
+	fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para hacer el fill que rellena el mapa, no quiero copiarme :).
+	while (map[i])
+	{
+		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
+			exit_message("Error: Not playable", tools);
+		i++;
+	}
+}
 
 void	check_ber(char *maps)
 {
