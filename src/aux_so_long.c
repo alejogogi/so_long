@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:42:40 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/12 21:06:57 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/14 13:58:17 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	floot_fill(t_tools *tools)
 
 	i = 0;
 	cpy_map(tools, map);
-	fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para hacer el fill que rellena el mapa, no quiero copiarme :).
+	fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para hacer el fill que completa el floot_fill :).
 	while (map[i])
 	{
 		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
