@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:42:40 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/14 13:58:17 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/17 15:53:19 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,35 @@ void	cpy_map(t_tools *tools, char **map)
 	}
 }
 
+void	search_player(char **map, int *x, int *y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+			{
+				*x = j;
+				*y = i;
+				return;
+ 			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	aux_fill(t_tools *tools, char **map, int x, int y)
+{
+	//iniciamos desde la posicion del jugador, y empezamos a rellenar todo con f
+	//falta tambien verificar que existan monedas y una salida :)
+}
+
 void	floot_fill(t_tools *tools)
 {
 	char	**map;
@@ -34,7 +63,8 @@ void	floot_fill(t_tools *tools)
 
 	i = 0;
 	cpy_map(tools, map);
-	fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para hacer el fill que completa el floot_fill :).
+	search_player(map, tools->player_x, tools->player_y);
+	aux_fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para avbar de completar el fill;
 	while (map[i])
 	{
 		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
