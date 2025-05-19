@@ -3,28 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   aux_so_long.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:42:40 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/17 15:53:19 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/19 17:58:05 by alejagom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	cpy_map(t_tools *tools, char **map)
+void print_char_matrix(char **matrix) {
+    int i = 0;
+
+    while (matrix[i] != NULL) { // Itera hasta encontrar NULL
+        ft_printf("%s", matrix[i]);
+        i++;
+    }
+}
+
+void	free_map(char **map)
 {
 	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+char	**cpy_map(t_tools *tools)
+{
+	int	i;
+	char **map;
 
 	i = 0;
 	map = (char **)malloc((tools->rows + 1) * sizeof(char *));
 	if (!map)
 		exit_message("Error", tools);
-	while (map[i] < tools->rows)
+	while (i < tools->rows)
 	{
 		map[i] = ft_strdup(tools->cpy_map[i]);
 		i++;
 	}
+	map[i] = NULL;
+	return(map);
 }
 
 void	search_player(char **map, int *x, int *y)
@@ -52,8 +76,15 @@ void	search_player(char **map, int *x, int *y)
 
 void	aux_fill(t_tools *tools, char **map, int x, int y)
 {
-	//iniciamos desde la posicion del jugador, y empezamos a rellenar todo con f
-	//falta tambien verificar que existan monedas y una salida :)
+	if (x < 0 || x >= tools->rows || y < 0 || y >= tools->colums)
+			return ;
+	if (map[x][y] == '1' || map[x][y] == 'F')
+			return ;
+	map[x][y] = 'F';
+	aux_fill(tools, map, x + 1, y);
+    aux_fill(tools, map, x - 1, y);
+    aux_fill(tools, map, x, y + 1);
+    aux_fill(tools, map, x, y - 1);
 }
 
 void	floot_fill(t_tools *tools)
@@ -62,15 +93,20 @@ void	floot_fill(t_tools *tools)
 	int		i;
 
 	i = 0;
-	cpy_map(tools, map);
-	search_player(map, tools->player_x, tools->player_y);
-	aux_fill(tools, map, tools->player_x, tools->player_y);//quedo aqui para avbar de completar el fill;
+	map = cpy_map(tools);
+	search_player(map, &tools->player_x, &tools->player_y);
+	aux_fill(tools, map, tools->player_x, tools->player_y);
 	while (map[i])
 	{
 		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
+		{
+			free_map(map);
 			exit_message("Error: Not playable", tools);
+		}
 		i++;
 	}
+	print_char_matrix(map);
+	free_map(map);
 }
 
 void	check_ber(char *maps)
@@ -80,7 +116,6 @@ void	check_ber(char *maps)
 
 	ber = ".ber";
 	i = ft_strlen(maps);
-	//ft_strncmp(&maps[ì -4]) se desplaza a la posicion desde la que quiero que compare.
 	if (i < 4 || ft_strncmp(&maps[i - 4], ber, 4) != 0)
 	{
 		ft_printf("Error: Invalid map (no .ber)\n");

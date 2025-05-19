@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+         #
+#    By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/06 19:46:51 by alejagom          #+#    #+#              #
-#    Updated: 2025/05/10 12:26:26 by alejogogi        ###   ########.fr        #
+#    Updated: 2025/05/19 17:17:55 by alejagom         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = ./src
 SRC = $(wildcard $(SRC_DIR)/*.c) 
 OBJ = $(SRC:.c=.o)
