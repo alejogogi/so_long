@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parc_maps.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:47:23 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/19 16:57:12 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:33:27 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	exit_message(char *error, t_tools *tools)
-{
-	free_tools(tools);
-	ft_printf("%s\n", error);
-	exit(EXIT_FAILURE);
-}
 
 void	aux_check_walls(t_tools *tools)
 {
@@ -83,6 +76,7 @@ void	check_coins(t_tools *tools)
 		}
 		i++;
 	}
+	tools->coins = check;
 	if (check == 0)
 		exit_message("Error: Coins not found.", tools);
 }

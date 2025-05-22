@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/19 17:52:10 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/05/21 21:39:52 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,18 @@ void	check_args(int av, char **args)
 	check_ber(args[1]);
 }
 
-void	free_tools(t_tools *tools)
+void	check_ber(char *maps)
 {
-	int	i;
+	int		i;
+	char	*ber;
 
-	i = 0;
-	if (tools->cpy_map)
+	ber = ".ber";
+	i = ft_strlen(maps);
+	if (i < 4 || ft_strncmp(&maps[i - 4], ber, 4) != 0)
 	{
-		while (tools->cpy_map[i])
-		{
-			free(tools->cpy_map[i]);
-			i++;
-		}
-		free(tools->cpy_map);
+		ft_printf("Error: Invalid map (no .ber)\n");
+		exit(EXIT_FAILURE);
 	}
-	free(tools);
 }
 
 int	main(int av, char **args)
@@ -52,7 +49,8 @@ int	main(int av, char **args)
 	check_args(av, args);
 	open_map(args[1], tools);
 	parc_map(tools);
-	//star_game(tools);
-	free_tools(tools);
+	start_game(tools);
+	//draw_map(tools);
+	mlx_loop(tools->mlx);
 	return (0);
 }

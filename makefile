@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+         #
+#    By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/06 19:46:51 by alejagom          #+#    #+#              #
-#    Updated: 2025/05/19 17:17:55 by alejagom         ###   ########.fr        #
+#    Updated: 2025/05/21 21:24:38 by alejogogi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJ = $(SRC:.c=.o)
 
 MLX_DIR = ./minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -lX11 -lXext -lm
 
 LIB_DIR = ./libft
 LIBFT =	$(LIB_DIR)/libft.a
@@ -48,7 +49,7 @@ $(FT_PRINTF):
 	$(MAKE) -C $(FT_PRINTF_DIR)
 
 $(NAME): $(OBJ) $(MLX) $(LIBFT) $(FT_PRINTF)
-	$(CC) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(LIBFT) $(FT_PRINTF) $(MLX_FLAGS) -o $(NAME)
 	
 	@clear
 %.o: %.c 
