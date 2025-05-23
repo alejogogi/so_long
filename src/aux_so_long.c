@@ -14,8 +14,8 @@
 
 char	**cpy_map(t_tools *tools)
 {
-	int	i;
-	char **map;
+	int		i;
+	char	**map;
 
 	i = 0;
 	map = (char **)malloc((tools->rows + 1) * sizeof(char *));
@@ -27,7 +27,7 @@ char	**cpy_map(t_tools *tools)
 		i++;
 	}
 	map[i] = NULL;
-	return(map);
+	return (map);
 }
 
 void	search_player(char **map, int *x, int *y)
@@ -45,8 +45,8 @@ void	search_player(char **map, int *x, int *y)
 			{
 				*x = j;
 				*y = i;
-				return;
- 			}
+				return ;
+			}
 			j++;
 		}
 		i++;
@@ -56,9 +56,9 @@ void	search_player(char **map, int *x, int *y)
 void	aux_fill(t_tools *tools, char **map, int x, int y)
 {
 	if (x < 0 || x >= tools->rows || y < 0 || y >= tools->colums)
-			return ;
+		return ;
 	if (map[x][y] == '1' || map[x][y] == 'F')
-			return ;
+		return ;
 	map[x][y] = 'F';
 	aux_fill(tools, map, x + 1, y);
 	aux_fill(tools, map, x - 1, y);

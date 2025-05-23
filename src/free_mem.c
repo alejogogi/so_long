@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:31:14 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/21 19:29:09 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 00:20:12 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,14 @@ void	close_game(char *str, t_tools *tools)
 {
 	if (!tools)
 		return ;
-	if (tools->back)
-		mlx_destroy_image(tools->mlx, tools->back);
-	if (tools->coins_img)
-		mlx_destroy_image(tools->mlx ,tools->coins_img);
-	if (tools->player)
-		mlx_destroy_image(tools->mlx, tools->player);
-	if (tools->player_move)
-		mlx_destroy_image(tools->mlx, tools->player_move);
-	if (tools->exit_end)
-		mlx_destroy_image(tools->mlx, tools->exit_end);
-	if (tools->walls_img)
-		mlx_destroy_image(tools->mlx, tools->walls_img);
-	if (tools->mlx)
-		mlx_destroy_display(tools->mlx);
+	mlx_destroy_image(tools->mlx, tools->back);
+	mlx_destroy_image(tools->mlx, tools->coins_img);
+	mlx_destroy_image(tools->mlx, tools->exit_p);
+	mlx_destroy_image(tools->mlx, tools->player);
+	mlx_destroy_image(tools->mlx, tools->player_move);
+	mlx_destroy_image(tools->mlx, tools->exit_end);
+	mlx_destroy_image(tools->mlx, tools->walls_img);
+	mlx_destroy_window(tools->mlx, tools->window);
+	mlx_destroy_display(tools->mlx);
 	exit_message(str, tools);
 }

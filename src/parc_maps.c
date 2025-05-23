@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:47:23 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/20 19:33:27 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/23 23:46:32 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	aux_check_walls(t_tools *tools)
 {
 	int	o;
 	int	i;
-	
+
 	o = 1;
 	i = 0;
 	while (o < tools->rows)

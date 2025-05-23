@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/21 21:39:52 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 00:26:10 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,5 @@ int	main(int av, char **args)
 	open_map(args[1], tools);
 	parc_map(tools);
 	start_game(tools);
-	//draw_map(tools);
-	mlx_loop(tools->mlx);
 	return (0);
 }
