@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: alejagom <alejagom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:49:13 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/24 00:57:24 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 13:32:32 by alejagom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	draw_map(t_tools *tools)
 
 int	close_window(t_tools *tools)
 {
-	exit_message("Close window", tools);
+	close_game("Close window", tools);
 	return (0);
 }
 
