@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:30:28 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/23 23:47:10 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 01:35:22 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	move_key(int key, t_tools *tools)
 
 void	w_key(t_tools *tools)
 {
+	moves(tools);
 	if (tools->cpy_map[tools->player_y - 1][tools->player_x] != '1')
 	{
 		if (tools->cpy_map[tools->player_y - 1][tools->player_x] == 'E'
@@ -42,11 +43,11 @@ void	w_key(t_tools *tools)
 			tools->cpy_map[tools->player_y][tools->player_x] = '0';
 		}
 	}
-	moves(tools);
 }
 
 void	s_key(t_tools *tools)
 {
+	moves(tools);
 	if (tools->cpy_map[tools->player_y + 1][tools->player_x] != '1')
 	{
 		if (tools->cpy_map[tools->player_y + 1][tools->player_x] == 'E'
@@ -62,11 +63,11 @@ void	s_key(t_tools *tools)
 			tools->cpy_map[tools->player_y][tools->player_x] = '0';
 		}
 	}
-	moves(tools);
 }
 
 void	a_key(t_tools *tools)
 {
+	moves(tools);
 	if (tools->cpy_map[tools->player_y][tools->player_x - 1] != '1')
 	{
 		if (tools->cpy_map[tools->player_y][tools->player_x - 1] == 'E'
@@ -82,11 +83,11 @@ void	a_key(t_tools *tools)
 			tools->cpy_map[tools->player_y][tools->player_x] = '0';
 		}
 	}
-	moves(tools);
 }
 
 void	d_key(t_tools *tools)
 {
+	moves(tools);
 	if (tools->cpy_map[tools->player_y][tools->player_x + 1] != '1')
 	{
 		if (tools->cpy_map[tools->player_y][tools->player_x + 1] == 'E'
@@ -102,5 +103,4 @@ void	d_key(t_tools *tools)
 			tools->cpy_map[tools->player_y][tools->player_x] = '0';
 		}
 	}
-	moves(tools);
 }

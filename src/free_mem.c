@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:31:14 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/24 00:20:12 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 10:17:21 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_tools(t_tools *tools)
 		free(tools->cpy_map);
 		tools->cpy_map = NULL;
 	}
+	free(tools->mlx);
 	free(tools);
 }
 
