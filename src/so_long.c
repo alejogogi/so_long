@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:26:39 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/24 00:26:10 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 19:30:54 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,29 @@ void	check_args(int av, char **args)
 	check_ber(args[1]);
 }
 
+void	valid_args(t_tools *tools)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tools->cpy_map[i])
+	{
+		j = 0;
+		while (tools->cpy_map[i][j] && tools->cpy_map[i][j] != '\n')
+		{
+			if (tools->cpy_map[i][j] != '1' && tools->cpy_map[i][j] != '0'
+				&& tools->cpy_map[i][j] != 'C' && tools->cpy_map[i][j] != 'E'
+				&& tools->cpy_map[i][j] != 'P')
+			{
+				exit_message("Error", tools);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	check_ber(char *maps)
 {
 	int		i;
@@ -41,7 +64,7 @@ void	check_ber(char *maps)
 
 int	main(int av, char **args)
 {
-	t_tools		*tools;
+	t_tools	*tools;
 
 	tools = malloc(sizeof(t_tools));
 	if (!tools)

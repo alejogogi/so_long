@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:42:40 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/20 19:50:33 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/25 09:47:06 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**cpy_map(t_tools *tools)
 	return (map);
 }
 
-void	search_player(char **map, int *x, int *y)
+void	search_player(char **map, t_tools *tools)
 {
 	int	i;
 	int	j;
@@ -43,8 +43,8 @@ void	search_player(char **map, int *x, int *y)
 		{
 			if (map[i][j] == 'P')
 			{
-				*x = j;
-				*y = i;
+				tools->player_x = j;
+				tools->player_y = i;
 				return ;
 			}
 			j++;
@@ -59,7 +59,8 @@ void	aux_fill(t_tools *tools, char **map, int x, int y)
 		return ;
 	if (map[x][y] == '1' || map[x][y] == 'F')
 		return ;
-	map[x][y] = 'F';
+	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E')
+		map[x][y] = 'F';
 	aux_fill(tools, map, x + 1, y);
 	aux_fill(tools, map, x - 1, y);
 	aux_fill(tools, map, x, y + 1);
@@ -73,8 +74,8 @@ void	floot_fill(t_tools *tools)
 
 	i = 0;
 	map = cpy_map(tools);
-	search_player(map, &tools->player_x, &tools->player_y);
-	aux_fill(tools, map, tools->player_x, tools->player_y);
+	search_player(map, tools);
+	aux_fill(tools, map, tools->player_y, tools->player_x);
 	while (map[i])
 	{
 		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))

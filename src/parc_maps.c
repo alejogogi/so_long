@@ -6,7 +6,7 @@
 /*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:47:23 by alejogogi         #+#    #+#             */
-/*   Updated: 2025/05/23 23:46:32 by alejogogi        ###   ########.fr       */
+/*   Updated: 2025/05/24 19:05:22 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	parc_map(t_tools *tools)
 			exit_message("Error: Invalid map.", tools);
 		i++;
 	}
+	valid_args(tools);
 	doubble_items(tools, 'P', "Error: Doubble player.");
 	doubble_items(tools, 'E', "Error: Doubble exit.");
 	check_coins(tools);
